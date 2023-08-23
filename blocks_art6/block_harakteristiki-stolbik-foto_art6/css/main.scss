@@ -35,15 +35,15 @@ body {
   background-color: #fff;
 
   @include xl {
-    padding: 40px 0;
+    padding: 49px 0;
   }
 
-  @include md {
-    padding: 31px 0;
+  @include lg {
+    padding: 35px 0;
   }
 
   @include xs {
-    padding: 23px 0;
+    padding: 17px 0;
   }
 }
 
@@ -72,8 +72,12 @@ body {
 
 .spec-photo-columns__wrapper {
   display: grid;
+  grid-template-areas:
+    "image name"
+    "image features";
   grid-template-columns: 46.21% 50.76%;
-  gap: 0 3%;
+  grid-template-rows: auto 1fr;
+  gap: 29px 3%;
   padding: 43px 42px 41px;
   border: 1px solid #ababab;
   font-family: "Montserrat", sans-serif;
@@ -92,17 +96,35 @@ body {
   }
 
   @include xl {
-    padding: 49px 0;
+    grid-template-columns: 46.42% 50.42%;
+    gap: 26px 3.16%;
+    padding: 37px 38px 36px;
   }
 
   @include lg {
+    grid-template-columns: 46.17% 50.62%;
+    gap: 24px 3.83%;
+    padding: 29px 29px 27px;
+
     p {
       font-size: 15px;
     }
   }
 
+  @include md {
+    grid-template-areas:
+      "name"
+      "image"
+      "features";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 0;
+    padding: 30px 30px 34px;
+  }
+
   @include xs {
     grid-template-columns: 1fr;
+    padding: 24px 19px 28px;
 
     p {
       font-size: 14px;
@@ -111,6 +133,7 @@ body {
 }
 
 .spec-photo-columns__image {
+  grid-area: image;
   position: relative;
   padding-top: 56.41%;
 
@@ -122,18 +145,49 @@ body {
     height: 100%;
     object-fit: cover;
   }
+
+  @include md {
+    margin-bottom: 28px;
+    padding-top: 45.9%;
+  }
+
+  @include xs {
+    margin-bottom: 30px;
+  }
+}
+
+.spec-photo-columns__name {
+  grid-area: name;
+  margin: 0;
+  color: #000;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+
+  @include xl {
+    font-size: 22px;
+    line-height: 17px;
+  }
+
+  @include lg {
+    font-size: 21px;
+  }
+
+  @include md {
+    margin-bottom: 19px;
+    font-size: 22px;
+  }
+
+  @include xs {
+    margin-bottom: 26px;
+    font-size: 20px;
+    line-height: 12px;
+  }
 }
 
 .spec-photo-columns__features {
-  h3 {
-    margin: 0 0 29px 0;
-    color: #000;
-    font-feature-settings: "clig" off, "liga" off;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 28px;
-  }
-
+  grid-area: features;
   p {
     line-height: 1.5;
 
@@ -142,20 +196,27 @@ body {
     }
   }
 
+  @include lg {
+    p {
+      font-size: 16px;
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
   @include md {
     p {
       &:not(:last-child) {
-        margin-bottom: 11px;
+        margin-bottom: 10px;
       }
     }
   }
 
   @include xs {
-    padding: 26px 27px 32px 25px;
-    border-right: none;
-    border-bottom: 1px solid #ababab;
-
     p {
+      font-size: 14px;
       line-height: 1.42;
 
       &:not(:last-child) {
